@@ -7,7 +7,6 @@ public class Human extends Unit{
     public Human(String name) {
         super(name);
     }
-
     @Override
     public HashMap<Integer, Integer> getLevelsExperiences() {
         HashMap<Integer, Integer> map = new HashMap<>();

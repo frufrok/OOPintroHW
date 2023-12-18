@@ -4,8 +4,8 @@ import java.util.HashMap;
 
 public interface LevelChangeable {
     int getCurrentLevel();
+    void setCurrentLevel(int level);
     int getCurrentExperience();
-    int getCurrentLevelExperience();
+    void setCurrentExperience(int exp);
     HashMap<Integer, Integer> getLevelsExperiences();
-    void changeExperience(int value);
 }

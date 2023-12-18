@@ -6,6 +6,11 @@ public abstract class Unit implements LevelChangeable {
     private String name;
     private int currentLevel;
     private int currentExperience;
+    public Unit(String name) {
+        this.name = name;
+        this.currentLevel = 1;
+        this.currentExperience = 0;
+    }
     public String getName() {
         return this.name;
     }
@@ -15,49 +20,22 @@ public abstract class Unit implements LevelChangeable {
     public int getCurrentLevel() {
         return this.currentLevel;
     }
+    public void setCurrentLevel(int level) {
+        this.currentLevel = level;
+    }
     public int getCurrentExperience() {
         return this.currentExperience;
     }
-    public int getCurrentLevelExperience() {
-        HashMap<Integer, Integer> map = this.getLevelsExperiences();
-        return map.getOrDefault(this.getCurrentLevel(), -1);
+    public void setCurrentExperience(int experience) {
+        this.currentExperience = experience;
     }
     abstract public HashMap<Integer,Integer> getLevelsExperiences();
-    public void changeExperience(int value) {
-        int newValue = this.currentExperience + value;
-        int curLevelExp = this.getCurrentLevelExperience();
-        if (newValue >= 0) {
-            if (curLevelExp >= 0 && newValue >= curLevelExp) {
-                this.currentLevel += 1;
-                this.changeExperience(newValue - curLevelExp);
-            }
-            else {
-                this.currentExperience = newValue;
-            }
-        }
-        else {
-            if (this.currentLevel > 1) {
-                this.currentLevel -= 1;
-                this.changeExperience(newValue + this.getCurrentExperience());
-            }
-            else {
-                this.currentExperience = 0;
-            }
-        }
-    }
-
-    public Unit(String name) {
-        this.name = name;
-        this.currentLevel = 1;
-        this.currentExperience = 0;
-    }
-
     @Override
     public String toString() {
-        int currentLevelExperience = this.getCurrentLevelExperience();
+        int currentLevelExperience = ExperienceChangedHandler.getCurrentLevelExperience(this);
         if (currentLevelExperience >= 0) {
             return String.format("Юнит %s, текущий уровень: %d, текущий опыт: %d, следующий уровень по достижении %d",
-                    this.name, this.currentLevel, this.currentExperience, this.getCurrentLevelExperience());
+                    this.name, this.currentLevel, this.currentExperience, ExperienceChangedHandler.getCurrentLevelExperience(this));
         }
         else {
             return String.format("Юнит %s, текущий уровень: %d, текущий опыт: %d, полностью прокачан.",
