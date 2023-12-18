@@ -23,7 +23,6 @@ public class Program {
         ExperienceChangedHandler.handleExperienceChanged(man, event3);
         print(man.toString());
 
-
     }
     public static void print(String txt) {
         System.out.println(txt);
