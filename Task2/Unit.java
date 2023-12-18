@@ -18,7 +18,10 @@ public abstract class Unit implements LevelChangeable {
     public int getCurrentExperience() {
         return this.currentExperience;
     }
-    abstract public int getCurrentLevelExperience();
+    public int getCurrentLevelExperience() {
+        HashMap<Integer, Integer> map = this.getLevelsExperiences();
+        return map.getOrDefault(this.getCurrentLevel(), -1);
+    }
     abstract public HashMap<Integer,Integer> getLevelsExperiences();
     public void changeExperience(int value) {
         int newValue = this.currentExperience + value;
