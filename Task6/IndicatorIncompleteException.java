@@ -1,8 +1,8 @@
 package Task6;
 
-public class IndicatorIncomplete extends Exception{
+public class IndicatorIncompleteException extends Exception{
     private String message = "";
-    public IndicatorIncomplete(String message) {
+    public IndicatorIncompleteException(String message) {
         this.message = message;
     }
     public String getMessage() {

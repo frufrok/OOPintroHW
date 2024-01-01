@@ -119,7 +119,7 @@ public class Program {
         try {
             controller.printFormatted(value);
         }
-        catch (IndicatorIncomplete e) {
+        catch (IndicatorIncompleteException e) {
             Printer printer = new ConsolePrinter();
             printer.print("Индикатор не завершен:");
             printer.print(e.getMessage());

@@ -7,7 +7,7 @@ public class Controller {
         this.indicator = indicator;
         this.printer = printer;
     }
-    public void printFormatted(int x) throws IndicatorIncomplete {
+    public void printFormatted(int x) throws IndicatorIncompleteException {
         this.printer.print(this.indicator.getFormatted(x));
     }
     public Indicator getIndicator() {

@@ -16,13 +16,13 @@ public class Indicator {
     public void deleteCheck(Checker checker) {
         checks.remove(checker);
     }
-    public String getFormatted(int x) throws IndicatorIncomplete {
+    public String getFormatted(int x) throws IndicatorIncompleteException {
         for (Checker check : checks.keySet()) {
             if (check.check(x)) {
                 return checks.get(check).format(x);
             }
         }
-        throw new IndicatorIncomplete(this.toString());
+        throw new IndicatorIncompleteException(this.toString());
     }
     @Override
     public String toString() {
